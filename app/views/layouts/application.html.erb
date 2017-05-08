@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Video Annotations</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <%= nav_bar brand:"" , brand_link:"#{root_path}", :fixed => :top do %>  
+    <%= menu_group do %>
+      <%= menu_item "Principal", root_path %>
+      <%= menu_divider %>       
+      <%= menu_item "Novo Video", new_video_path %> 
+      <%= menu_item "Nova Note", new_note_path %>       
+    <% end %>
+  <% end %>
+  <p class="notice"><%=notice%></p>
+  <p class="alert"><%=alert%></p>
+
+<div class="container">
+  <%= yield %>
+</div>
+
+  </body>
+</html>

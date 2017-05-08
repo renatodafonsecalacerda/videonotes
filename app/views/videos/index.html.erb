@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Videos Annotations</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>      
+      <th>Video #<%= @videos.count %></th>      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @videos.each do |video| %>
+      <tr>
+        <td>
+        <div class="container-fluid"> 
+          <div class="btn-toolbar" role="toolbar">
+            <%= button_to 'Show', video, class:"btn btn-group btn-info", method: :get %>
+            <%= button_to 'Edit', edit_video_path(video) , class:"btn btn-group btn-primary", method: :get %>          
+            <%= button_to 'Destroy', video, method: :delete, data: { confirm: 'Tem certeza que deseja deletar?' } , class:"btn btn-group btn-danger" %>
+            <%= button_to 'Create Annotation',notes_path, method: :get , class:"btn btn-group btn-warning" %>
+          </div>
+          <h4><%= video.titulo %></h4>
+          <iframe 
+              width="854" 
+              height="480" 
+              src="https://www.youtube.com/embed/<%= video.video.to_s %>?modestbranding=1" 
+              frameborder="0" 
+              allowfullscreen></iframe>              
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

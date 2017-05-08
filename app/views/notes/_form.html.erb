@@ -1,0 +1,36 @@
+<%= form_for(note) do |f| %>
+  <% if note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
+
+      <ul>
+      <% note.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="container">    
+    <iframe 
+                width="854" 
+                height="480" 
+                src="https://www.youtube.com/embed/<%= note.video.video.to_s %>?modestbranding=1" 
+                frameborder="0" 
+                allowfullscreen>
+    </iframe>
+    
+    <div class="field">
+      <%= f.label :tempo %>
+      <%= f.text_field :tempo %>
+    </div>
+
+    <div class="field">
+      <%= f.label :note %>
+      <%= f.text_field :note %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>
